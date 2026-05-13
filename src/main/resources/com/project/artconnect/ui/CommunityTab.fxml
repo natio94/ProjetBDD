@@ -8,11 +8,40 @@
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </padding>
-    <TableView fx:id="memberTable" VBox.vgrow="ALWAYS">
+
+    <Label text="Membres de la communauté" style="-fx-font-weight: bold; -fx-font-size: 13;" />
+    <TableView fx:id="memberTable" prefHeight="180" VBox.vgrow="SOMETIMES">
         <columns>
-            <TableColumn fx:id="nameColumn" text="Name" prefWidth="250" />
-            <TableColumn fx:id="emailColumn" text="Email" prefWidth="250" />
-            <TableColumn fx:id="cityColumn" text="City" prefWidth="150" />
+            <TableColumn fx:id="nameColumn"       text="Nom"         prefWidth="200" />
+            <TableColumn fx:id="emailColumn"      text="Email"       prefWidth="220" />
+            <TableColumn fx:id="cityColumn"       text="Ville"       prefWidth="120" />
+            <TableColumn fx:id="membershipColumn" text="Abonnement"  prefWidth="110" />
         </columns>
     </TableView>
+
+    <Label fx:id="memberDetailLabel" wrapText="true"
+           style="-fx-text-fill: #555; -fx-font-style: italic;" />
+
+    <SplitPane orientation="HORIZONTAL" VBox.vgrow="ALWAYS">
+        <VBox spacing="5">
+            <Label text="Avis laissés" style="-fx-font-weight: bold;" />
+            <TableView fx:id="reviewTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="reviewArtworkCol"  text="Œuvre"    prefWidth="160" />
+                    <TableColumn fx:id="reviewRatingCol"   text="Note"     prefWidth="70" />
+                    <TableColumn fx:id="reviewCommentCol"  text="Commentaire" prefWidth="220" />
+                </columns>
+            </TableView>
+        </VBox>
+        <VBox spacing="5">
+            <Label text="Réservations" style="-fx-font-weight: bold;" />
+            <TableView fx:id="bookingTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="bookingWorkshopCol" text="Atelier"  prefWidth="180" />
+                    <TableColumn fx:id="bookingDateCol"     text="Date"     prefWidth="100" />
+                    <TableColumn fx:id="bookingStatusCol"   text="Statut"   prefWidth="100" />
+                </columns>
+            </TableView>
+        </VBox>
+    </SplitPane>
 </VBox>

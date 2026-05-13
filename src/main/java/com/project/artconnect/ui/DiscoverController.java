@@ -3,6 +3,7 @@ package com.project.artconnect.ui;
 import com.project.artconnect.model.Exhibition;
 import com.project.artconnect.model.Gallery;
 import com.project.artconnect.model.Workshop;
+import com.project.artconnect.service.impl.JdbcGalleryService;
 import com.project.artconnect.service.GalleryService;
 import com.project.artconnect.service.WorkshopService;
 import com.project.artconnect.util.ServiceProvider;
@@ -17,22 +18,17 @@ public class DiscoverController {
     @FXML
     private FlowPane discoverPane;
 
-    private final GalleryService galleryService = ServiceProvider.getGalleryService();
+    private final JdbcGalleryService galleryService = (JdbcGalleryService) ServiceProvider.getGalleryService();
     private final WorkshopService workshopService = ServiceProvider.getWorkshopService();
 
     @FXML
     public void initialize() {
-        // Collect some exhibitions from galleries
-        List<Exhibition> featuredExhibitions = new ArrayList<>();
-        for (Gallery g : galleryService.getAllGalleries()) {
-            featuredExhibitions.addAll(g.getExhibitions());
-            if (featuredExhibitions.size() >= 3)
-                break;
-        }
+        List<Exhibition> featuredExhibitions = galleryService.getAllExhibitions()
+            .stream().limit(3).collect(java.util.stream.Collectors.toList());
 
-        featuredExhibitions.stream().limit(3).forEach(this::addExhibitionCard);
+        featuredExhibitions.forEach(this::addExhibitionCard);
         workshopService.getAllWorkshops().stream().limit(3).forEach(this::addWorkshopCard);
-    }
+}
 
     private void addExhibitionCard(Exhibition e) {
         VBox card = new VBox(5);

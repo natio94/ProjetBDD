@@ -120,9 +120,10 @@ public class JdbcArtworkDao implements ArtworkDao {
 
     @Override
     public List<Artwork> findByArtistName(String artistName) {
-        String sql = "SELECT * " +
-                "FROM view_artiste_artwork v " +
-                "WHERE v.artist_name = ?";
+        String sql = "SELECT aw.*, a.name AS artist_name " +
+                    "FROM Artwork aw " +
+                    "JOIN Artiste a ON aw.id_artiste = a.id_artiste " +
+                    "WHERE a.name = ?";
         try (Connection con = ConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, artistName);

@@ -43,4 +43,8 @@ public class ServiceProvider {
     public static CommunityService getCommunityService() {
         return communityService;
     }
+
+    public static JdbcCommunityService getJdbcCommunityService() {
+        return communityService;
+    }
 }

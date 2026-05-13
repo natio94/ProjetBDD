@@ -8,12 +8,14 @@
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </padding>
+    <Label text="Expositions" style="-fx-font-weight: bold; -fx-font-size: 13;" />
     <TableView fx:id="exhibitionTable" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn fx:id="titleColumn" text="Title" prefWidth="200" />
-            <TableColumn fx:id="galleryColumn" text="Gallery" prefWidth="150" />
-            <TableColumn fx:id="dateColumn" text="Start Date" prefWidth="120" />
-            <TableColumn fx:id="themeColumn" text="Theme" prefWidth="180" />
+            <TableColumn fx:id="titleColumn"   text="Titre"       prefWidth="200" />
+            <TableColumn fx:id="galleryColumn" text="Galerie"     prefWidth="150" />
+            <TableColumn fx:id="dateColumn"    text="Date début"  prefWidth="110" />
+            <TableColumn fx:id="themeColumn"   text="Thème"       prefWidth="160" />
+            <TableColumn fx:id="curatorColumn" text="Curateur"    prefWidth="150" />
         </columns>
     </TableView>
 </VBox>

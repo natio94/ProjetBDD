@@ -13,7 +13,7 @@ public interface ArtistDao {
 
     void save(Artist artist) throws SQLException;
 
-    void update(Artist artist) throws SQLException;
+    void update(Artist artist);
 
     void delete(String artistName);
 
