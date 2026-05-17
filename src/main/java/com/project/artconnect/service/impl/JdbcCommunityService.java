@@ -1,9 +1,9 @@
 package com.project.artconnect.service.impl;
 
-import com.project.artconnect.dao.impl.CommunityMemberDao;
+import com.project.artconnect.dao.CommunityMemberDao;
 import com.project.artconnect.model.CommunityMember;
 import com.project.artconnect.model.Review;
-import com.project.artconnect.persistence.JdbcCommunityMemberDao;
+import com.project.artconnect.dao.impl.persistence.JdbcCommunityMemberDao;
 import com.project.artconnect.service.CommunityService;
 
 import java.util.List;

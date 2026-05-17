@@ -2,10 +2,9 @@ package com.project.artconnect.service.impl;
 
 import com.project.artconnect.model.Artist;
 import com.project.artconnect.model.Discipline;
-import com.project.artconnect.persistence.JdbcArtistDao;
+import com.project.artconnect.dao.impl.persistence.JdbcArtistDao;
 import com.project.artconnect.service.ArtistService;
 
-import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 

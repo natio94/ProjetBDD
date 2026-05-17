@@ -2,7 +2,7 @@ package com.project.artconnect.service.impl;
 
 import com.project.artconnect.model.Artist;
 import com.project.artconnect.model.Artwork;
-import com.project.artconnect.persistence.JdbcArtworkDao;
+import com.project.artconnect.dao.impl.persistence.JdbcArtworkDao;
 import com.project.artconnect.service.ArtworkService;
 
 import java.util.List;

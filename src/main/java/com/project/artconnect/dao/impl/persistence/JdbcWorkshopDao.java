@@ -1,6 +1,6 @@
-package com.project.artconnect.persistence;
+package com.project.artconnect.dao.impl.persistence;
 
-import com.project.artconnect.dao.impl.WorkshopDao;
+import com.project.artconnect.dao.WorkshopDao;
 import com.project.artconnect.model.Artist;
 import com.project.artconnect.model.Booking;
 import com.project.artconnect.model.CommunityMember;

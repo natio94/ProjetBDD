@@ -1,7 +1,5 @@
 package com.project.artconnect;
 
-import com.project.artconnect.persistence.JdbcArtistDao;
-import com.project.artconnect.persistence.JdbcArtworkDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,9 +12,6 @@ public class MainApp extends Application {
         Scene scene = new Scene(loader.load(), 1200, 800);
         stage.setTitle("ArtConnect Pro - Local Art Community Platform");
         stage.setScene(scene);
-//        JdbcArtistDao artistDao = new JdbcArtistDao();
-//        JdbcArtworkDao artworkDao = new JdbcArtworkDao();
-//        System.out.println(artworkDao.findByArtistName("Lucas Moreau"));
         stage.show();
 
     }

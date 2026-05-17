@@ -38,12 +38,13 @@ public class WorkshopController {
     @FXML
     private TableColumn<Workshop, Integer> durationColumn;
 
+
     @FXML private ComboBox<CommunityMember> memberCombo;
     @FXML private Button bookButton;
     @FXML private Label bookingStatusLabel;
     private final WorkshopService  workshopService  = ServiceProvider.getWorkshopService();
     private final CommunityService communityService = ServiceProvider.getCommunityService();
-
+    private Alert alert = new Alert(Alert.AlertType.ERROR);
     @FXML
     public void initialize() {
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -100,11 +101,11 @@ public class WorkshopController {
             bookingStatusLabel.setText("✓ Réservation confirmée pour " + member.getName());
         } catch (RuntimeException e) {
             if (Objects.equals(e.getMessage(), "java.sql.SQLException: No more place available")){
-                bookingStatusLabel.setText("Plus de place disponible pour cet atelier.");
-
+                alert.setContentText("Plus de place disponible pour cet atelier.");
             }else{
-                bookingStatusLabel.setText("✗ " + e.getMessage());
+                alert.setContentText(e.getMessage());
             }
+            alert.showAndWait();
         }
         refreshTable();
     }

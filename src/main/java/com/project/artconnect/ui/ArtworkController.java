@@ -6,11 +6,14 @@ import com.project.artconnect.util.ServiceProvider;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ArtworkController {
+
     @FXML
     private TableView<Artwork> artworkTable;
     @FXML
@@ -24,6 +27,9 @@ public class ArtworkController {
     @FXML
     private TableColumn<Artwork, String> artistColumn;
 
+    @FXML
+    private Button delButton;
+
     private final ArtworkService artworkService = ServiceProvider.getArtworkService();
 
     @FXML
@@ -36,6 +42,18 @@ public class ArtworkController {
         artistColumn.setCellValueFactory(cellData -> new SimpleStringProperty(
                 cellData.getValue().getArtist() != null ? cellData.getValue().getArtist().getName() : "Unknown"));
 
+       refreshData();
+    }
+
+    public void handleDelArtwork() {
+        Artwork selected = artworkTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            artworkService.deleteArtwork(selected.getTitle());
+            refreshData();
+        }
+    }
+
+    public void refreshData(){
         artworkTable.setItems(FXCollections.observableArrayList(artworkService.getAllArtworks()));
     }
 }

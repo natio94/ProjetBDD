@@ -18,7 +18,7 @@ CREATE TABLE if not exists Artiste(
 CREATE TABLE if not exists Artwork(
    id_artworks INT AUTO_INCREMENT,
    Title VARCHAR(100),
-   CreationYear YEAR,
+   CreationYear INT,
    Type VARCHAR(50),
    Medium VARCHAR(50),
    Dimensions VARCHAR(50),

@@ -1,10 +1,10 @@
 package com.project.artconnect.service.impl;
 
-import com.project.artconnect.dao.impl.WorkshopDao;
+import com.project.artconnect.dao.WorkshopDao;
 import com.project.artconnect.model.Booking;
 import com.project.artconnect.model.CommunityMember;
 import com.project.artconnect.model.Workshop;
-import com.project.artconnect.persistence.JdbcWorkshopDao;
+import com.project.artconnect.dao.impl.persistence.JdbcWorkshopDao;
 import com.project.artconnect.service.WorkshopService;
 
 import java.util.List;

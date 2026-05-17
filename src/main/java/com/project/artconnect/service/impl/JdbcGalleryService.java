@@ -1,10 +1,9 @@
 package com.project.artconnect.service.impl;
 
-import com.project.artconnect.dao.impl.GalleryDao;
 import com.project.artconnect.model.Exhibition;
 import com.project.artconnect.model.Gallery;
-import com.project.artconnect.persistence.JdbcExhibitionDao;
-import com.project.artconnect.persistence.JdbcGalleryDao;
+import com.project.artconnect.dao.impl.persistence.JdbcExhibitionDao;
+import com.project.artconnect.dao.impl.persistence.JdbcGalleryDao;
 import com.project.artconnect.service.GalleryService;
 
 import java.util.List;

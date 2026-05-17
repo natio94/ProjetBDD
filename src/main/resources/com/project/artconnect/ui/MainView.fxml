@@ -21,8 +21,11 @@
         <Tab text="Artists">
             <fx:include source="ArtistsTab.fxml"/>
         </Tab>
-        <Tab text="Artworks">
+        <Tab text="Artworks" >
             <fx:include source="ArtworksTab.fxml"/>
+        </Tab>
+        <Tab text="Add Artwork">
+            <fx:include source="ArtworkAddTab.fxml"/>
         </Tab>
         <Tab text="Galleries">
             <fx:include source="GalleriesTab.fxml"/>

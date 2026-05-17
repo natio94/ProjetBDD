@@ -1,6 +1,6 @@
-package com.project.artconnect.persistence;
+package com.project.artconnect.dao.impl.persistence;
 
-import com.project.artconnect.dao.impl.GalleryDao;
+import com.project.artconnect.dao.GalleryDao;
 import com.project.artconnect.model.Exhibition;
 import com.project.artconnect.model.Gallery;
 import com.project.artconnect.util.ConnectionManager;

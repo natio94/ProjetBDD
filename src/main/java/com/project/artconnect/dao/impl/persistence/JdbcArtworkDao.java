@@ -1,6 +1,6 @@
-package com.project.artconnect.persistence;
+package com.project.artconnect.dao.impl.persistence;
 
-import com.project.artconnect.dao.impl.ArtworkDao;
+import com.project.artconnect.dao.ArtworkDao;
 import com.project.artconnect.model.Artist;
 import com.project.artconnect.model.Artwork;
 import com.project.artconnect.util.ConnectionManager;
@@ -69,10 +69,11 @@ public class JdbcArtworkDao implements ArtworkDao {
                 if (!rs.next()) throw new RuntimeException("Artiste introuvable : " + artwork.getArtist().getName());
                 idArtiste = rs.getInt("id_artiste");
             }
+            System.out.println(artwork.getCreationYear());
             // Insérer l'artwork
             try (PreparedStatement ps = con.prepareStatement(sqlInsert)) {
                 ps.setString(1, artwork.getTitle());
-                ps.setInt(2, artwork.getCreationYear());
+                ps.setString(2, artwork.getCreationYear().toString());
                 ps.setString(3, artwork.getType());
                 ps.setString(4, artwork.getMedium());
                 ps.setString(5, artwork.getDimensions());

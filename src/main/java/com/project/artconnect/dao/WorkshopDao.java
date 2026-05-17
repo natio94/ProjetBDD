@@ -1,4 +1,4 @@
-package com.project.artconnect.dao.impl;
+package com.project.artconnect.dao;
 
 import com.project.artconnect.model.Booking;
 import com.project.artconnect.model.CommunityMember;

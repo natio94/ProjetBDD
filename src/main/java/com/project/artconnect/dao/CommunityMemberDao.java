@@ -1,10 +1,8 @@
-package com.project.artconnect.dao.impl;
+package com.project.artconnect.dao;
 
 import com.project.artconnect.model.CommunityMember;
 import com.project.artconnect.model.Review;
-import com.project.artconnect.model.Workshop;
 
-import java.lang.reflect.Member;
 import java.util.List;
 import java.util.Optional;
 

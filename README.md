@@ -12,7 +12,7 @@ This project is a skeleton designed for students to practice:
 - `com.project.artconnect.MainApp`: Entry point.
 - `com.project.artconnect.model`: Domain entities (POJOs/Stubs).
 - `com.project.artconnect.dao`: Data Access Object interfaces.
-- `com.project.artconnect.persistence`: JDBC implementations (TODO: Students implement these).
+- `com.project.artconnect.dao.impl.persistence`: JDBC implementations (TODO: Students implement these).
 - `com.project.artconnect.service`: Business logic layer.
 - `com.project.artconnect.ui`: JavaFX Controllers and FXML views.
 - `com.project.artconnect.util`: Utility classes like `ConnectionManager` and `ServiceProvider`.
@@ -37,7 +37,7 @@ Unlike typical database-centric skeletons, ArtConnect Pro follows strict OOP bes
 1. **ID Discovery**: Students must "discover" or create IDs at the database level. Your JDBC DAOs will need to map database IDs (Primary Keys) to Java object references during the `findAll` or `save` operations.
 2. **Relational Mapping**: You must implement the logic to reconstruct the object graph from relational tables. When fetching an `Artwork`, you must also fetch/link the corresponding `Artist`.
 3. **Database Setup**: Create the MySQL database and tables as per the technical requirements (including IDs and Foreign Keys that are NOT visible in the Java models).
-4. **JDBC Implementation**: Implement the `Jdbc` DAO classes in `com.project.artconnect.persistence`.
+4. **JDBC Implementation**: Implement the `Jdbc` DAO classes in `com.project.artconnect.dao.impl.persistence`.
 5. **Service Swap**: Update `ServiceProvider` to use your new `Jdbc` DAOs.
 
 ## Architecture Diagram

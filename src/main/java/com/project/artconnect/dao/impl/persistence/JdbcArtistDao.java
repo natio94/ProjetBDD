@@ -1,6 +1,6 @@
-package com.project.artconnect.persistence;
+package com.project.artconnect.dao.impl.persistence;
 
-import com.project.artconnect.dao.impl.ArtistDao;
+import com.project.artconnect.dao.ArtistDao;
 import com.project.artconnect.model.Artist;
 import com.project.artconnect.model.Discipline;
 import com.project.artconnect.util.ConnectionManager;
