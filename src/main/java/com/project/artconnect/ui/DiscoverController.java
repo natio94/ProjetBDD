@@ -18,14 +18,15 @@ public class DiscoverController {
     @FXML
     private FlowPane discoverPane;
 
-    private final JdbcGalleryService galleryService = (JdbcGalleryService) ServiceProvider.getGalleryService();
+    private final GalleryService galleryService = ServiceProvider.getGalleryService();
     private final WorkshopService workshopService = ServiceProvider.getWorkshopService();
 
     @FXML
     public void initialize() {
         List<Exhibition> featuredExhibitions = galleryService.getAllExhibitions()
-            .stream().limit(3).collect(java.util.stream.Collectors.toList());
-
+                .stream()
+                .limit(3)
+                .toList();
         featuredExhibitions.forEach(this::addExhibitionCard);
         workshopService.getAllWorkshops().stream().limit(3).forEach(this::addWorkshopCard);
 }

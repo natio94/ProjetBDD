@@ -17,6 +17,8 @@
             <TableColumn fx:id="priceColumn"           text="Prix (€)"       prefWidth="80" />
             <TableColumn fx:id="levelColumn"           text="Niveau"         prefWidth="100" />
             <TableColumn fx:id="maxParticipantsColumn" text="Places max"     prefWidth="90" />
+            <TableColumn fx:id="remainingPlacesColumn" text="Places restantes"   prefWidth="90" />
+            <TableColumn fx:id="durationColumn"        text="Durée (min)"     prefWidth="80" />
             <TableColumn fx:id="locationColumn"        text="Lieu"           prefWidth="150" />
         </columns>
     </TableView>

@@ -1,7 +1,6 @@
 package com.project.artconnect.ui;
 
 import com.project.artconnect.model.Exhibition;
-import com.project.artconnect.model.Gallery;
 import com.project.artconnect.service.GalleryService;
 import com.project.artconnect.util.ServiceProvider;
 import javafx.beans.property.SimpleStringProperty;
@@ -11,7 +10,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ExhibitionController {
@@ -25,6 +23,8 @@ public class ExhibitionController {
     private TableColumn<Exhibition, String> themeColumn;
     @FXML
     private TableColumn<Exhibition, String> galleryColumn;
+    @FXML
+    private TableColumn<Exhibition,String> curatorColumn;
 
     private final GalleryService galleryService = ServiceProvider.getGalleryService();
 
@@ -36,15 +36,12 @@ public class ExhibitionController {
 
         galleryColumn.setCellValueFactory(cellData -> new SimpleStringProperty(
                 cellData.getValue().getGallery() != null ? cellData.getValue().getGallery().getName() : "Unknown"));
-
+        curatorColumn.setCellValueFactory(new PropertyValueFactory<>("curatorName"));
         refreshData();
     }
 
     private void refreshData() {
-        List<Exhibition> all = new ArrayList<>();
-        for (Gallery g : galleryService.getAllGalleries()) {
-            all.addAll(g.getExhibitions());
-        }
+        List<Exhibition> all = galleryService.getAllExhibitions();
         exhibitionTable.setItems(FXCollections.observableArrayList(all));
     }
 }

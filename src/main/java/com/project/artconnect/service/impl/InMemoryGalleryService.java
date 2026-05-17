@@ -69,4 +69,9 @@ public class InMemoryGalleryService implements GalleryService {
             return Collections.emptyList();
         return gallery.getExhibitions();
     }
+
+    @Override
+    public List<Exhibition> getAllExhibitions() {
+        return List.of();
+    }
 }

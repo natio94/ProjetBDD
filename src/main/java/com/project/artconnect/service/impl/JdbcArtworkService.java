@@ -17,7 +17,6 @@ public class JdbcArtworkService implements ArtworkService {
 
     @Override
     public Optional<Artwork> getArtworkByTitle(String title) {
-
         return artworkDao.findByTitle(title);
     }
 

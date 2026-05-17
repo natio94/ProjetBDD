@@ -11,18 +11,15 @@ import java.util.stream.Collectors;
 
 public class JdbcArtistService implements ArtistService {
     private final JdbcArtistDao artistDao;
-    private final Map<String, Discipline> disciplines = new LinkedHashMap<>();
+
     public JdbcArtistService()   {
         this.artistDao = new JdbcArtistDao();
     }
 
     @Override
     public List<Artist> getAllArtists() {
-        try {
             return artistDao.findAll();
-        } catch (SQLException e) {
-            throw new RuntimeException("Erreur lors de la récupération des artistes", e);
-        }
+
     }
 
     @Override
@@ -35,11 +32,9 @@ public class JdbcArtistService implements ArtistService {
 
     @Override
     public void createArtist(Artist artist) {
-        try {
+
             artistDao.save(artist);
-        } catch (SQLException e) {
-            throw new RuntimeException("Erreur lors de la création de l'artiste", e);
-        }
+
     }
 
     @Override
@@ -57,18 +52,14 @@ public class JdbcArtistService implements ArtistService {
     @Override
     public List<Discipline> getAllDisciplines() {
 
-        return new ArrayList<>(disciplines.values());
+        return artistDao.findAllDisciplines();
     }
 
     @Override
     public List<Artist> searchArtists(String query, String disciplineName, String city) {
         List<Artist> candidates;
-        try {
             candidates = (city != null && !city.trim().isEmpty()) ?
                     artistDao.findByCity(city) : artistDao.findAll();
-        } catch (SQLException e) {
-            throw new RuntimeException("Erreur lors de la recherche", e);
-        }
         return candidates.stream()
                 .filter(a -> query == null || query.trim().isEmpty() ||
                         a.getName().toLowerCase().contains(query.toLowerCase()))

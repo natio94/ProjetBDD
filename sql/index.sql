@@ -1,5 +1,3 @@
- drop view view_artiste_artwork;
- 
  create view view_artiste_artwork as select a.name as artiste_name, a.bio, aw.Title, aw.CreationYear, aw.Type, aw.Medium, aw.Dimensions, aw.Descriptions, aw.Price, aw.Status
  from Artiste a join Artwork aw on a.id_artiste = aw.id_artiste;
 

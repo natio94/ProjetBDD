@@ -30,10 +30,10 @@ BEGIN
 END$$
 DELIMITER ;
 
+
 -- Procédure 2 : Inscrire un membre à un atelier
 DELIMITER $$
 CREATE PROCEDURE InscrireMembreWorkshop(
-    IN p_idBooking INT,
     IN p_idMember INT,
     IN p_idWorkshop INT
 )
@@ -49,12 +49,8 @@ BEGIN
     FROM Booking
     WHERE idWorkshop = p_idWorkshop
       AND paymentStatus != 'Cancelled';
-    IF v_count >= v_max THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Atelier complet';
-    END IF;
-    INSERT INTO Booking
-    VALUES (p_idBooking, NOW(), 'Paid', p_idWorkshop, p_idMember);
+    INSERT INTO Booking (Booking_Date, paymentStatus, idWorkshop, idMember)
+    VALUES (NOW(), 'Paid', p_idWorkshop, p_idMember);
     COMMIT;
 END$$
 DELIMITER ;

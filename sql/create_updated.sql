@@ -2,7 +2,7 @@ CREATE DATABASE if not exists Art_Connect;
 USE Art_Connect ;
 
 CREATE TABLE if not exists Artiste(
-   id_artiste INT,
+   id_artiste INT AUTO_INCREMENT,
    bio TEXT,
    birth DATE,
    Email VARCHAR(50),
@@ -16,7 +16,7 @@ CREATE TABLE if not exists Artiste(
 );
 
 CREATE TABLE if not exists Artwork(
-   id_artworks INT,
+   id_artworks INT AUTO_INCREMENT,
    Title VARCHAR(100),
    CreationYear YEAR,
    Type VARCHAR(50),
@@ -31,7 +31,7 @@ CREATE TABLE if not exists Artwork(
 );
 
 CREATE TABLE if not exists CommunityMember(
-   idMember INT,
+   idMember INT AUTO_INCREMENT,
    name VARCHAR(50),
    email VARCHAR(50),
    phone VARCHAR(20),
@@ -42,7 +42,7 @@ CREATE TABLE if not exists CommunityMember(
 );
 
 CREATE TABLE if not exists Review(
-   idReview INT,
+   idReview INT AUTO_INCREMENT,
    comment TEXT,
    Rating INT,
    ReviewDate DATETIME,
@@ -54,13 +54,13 @@ CREATE TABLE if not exists Review(
 );
 
 CREATE TABLE if not exists ArtworkTag(
-   idTag INT,
+   idTag INT AUTO_INCREMENT,
    name VARCHAR(50),
    PRIMARY KEY(idTag)
 );
 
 CREATE TABLE if not exists Gallery(
-   idGallery INT,
+   idGallery INT AUTO_INCREMENT,
    name VARCHAR(50),
    address VARCHAR(100),
    ownerName VARCHAR(50),
@@ -72,7 +72,7 @@ CREATE TABLE if not exists Gallery(
 );
 
 CREATE TABLE if not exists Exhibition(
-   idExibhition INT,
+   idExibhition INT AUTO_INCREMENT,
    title VARCHAR(100),
    curatorName VARCHAR(50),
    Theme VARCHAR(50),
@@ -84,13 +84,13 @@ CREATE TABLE if not exists Exhibition(
 );
 
 CREATE TABLE if not exists Discipline(
-   idDiscipline INT,
+   idDiscipline INT AUTO_INCREMENT,
    name VARCHAR(50),
    PRIMARY KEY(idDiscipline)
 );
 
 CREATE TABLE if not exists Workshop(
-   idWorkshop INT,
+   idWorkshop INT AUTO_INCREMENT,
    title VARCHAR(100),
    date DATETIME,
    duration INT,
@@ -105,7 +105,7 @@ CREATE TABLE if not exists Workshop(
 );
 
 CREATE TABLE if not exists Booking(
-   id_booking INT,
+   id_booking INT AUTO_INCREMENT,
    Booking_Date DATETIME,
    paymentStatus VARCHAR(50),
    idWorkshop INT NOT NULL,

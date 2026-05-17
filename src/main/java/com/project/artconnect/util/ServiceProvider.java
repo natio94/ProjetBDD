@@ -15,6 +15,9 @@ public class ServiceProvider {
     private static final InMemoryCommunityService communityService = new InMemoryCommunityService();
     private static final JdbcArtistService jdbcartistService = new JdbcArtistService();
     private static final JdbcArtworkService jdbcArtworkService = new JdbcArtworkService();
+    private static final JdbcGalleryService jdbcGalleryService = new JdbcGalleryService();
+    private static final JdbcWorkshopService jdbcWorkshopService = new JdbcWorkshopService();
+    private static final JdbcCommunityService jdbcCommunityService = new JdbcCommunityService();
 
     static {
         // Initialize services with their dependencies
@@ -33,18 +36,15 @@ public class ServiceProvider {
     }
 
     public static GalleryService getGalleryService() {
-        return galleryService;
+        return jdbcGalleryService;
     }
 
     public static WorkshopService getWorkshopService() {
-        return workshopService;
+        return jdbcWorkshopService;
     }
 
     public static CommunityService getCommunityService() {
-        return communityService;
+        return jdbcCommunityService;
     }
 
-    public static JdbcCommunityService getJdbcCommunityService() {
-        return communityService;
-    }
 }

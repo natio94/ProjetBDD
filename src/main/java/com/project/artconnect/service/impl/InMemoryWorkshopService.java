@@ -60,4 +60,9 @@ public class InMemoryWorkshopService implements WorkshopService {
             return Collections.emptyList();
         return member.getBookings();
     }
+
+    @Override
+    public int getRemainingPlaces(String workshopTitle) {
+        return 0;
+    }
 }

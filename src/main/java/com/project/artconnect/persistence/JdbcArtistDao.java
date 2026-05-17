@@ -2,6 +2,7 @@ package com.project.artconnect.persistence;
 
 import com.project.artconnect.dao.impl.ArtistDao;
 import com.project.artconnect.model.Artist;
+import com.project.artconnect.model.Discipline;
 import com.project.artconnect.util.ConnectionManager;
 
 import java.sql.*;
@@ -20,7 +21,7 @@ public class JdbcArtistDao implements ArtistDao {
     }
 
     @Override
-    public List<Artist> findAll() throws SQLException {
+    public List<Artist> findAll(){
         // TODO: Implement SELECT * FROM artist
         List<Artist> artists = new ArrayList<>();
         try (Connection conn = ConnectionManager.getConnection()) {
@@ -30,12 +31,14 @@ public class JdbcArtistDao implements ArtistDao {
                     artists.add(new Artist(rs.getString("name"), rs.getString("bio"),  rs.getDate("birth"), rs.getString("Email"), rs.getString("city")));
                 }
             }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         return artists;
     }
 
     @Override
-    public void save(Artist artist) throws SQLException {
+    public void save(Artist artist){
         String sql = "INSERT INTO artiste(bio,birth,Email,phone,city,website,socialMedia,isActive,name) VALUES (?,?,?,?,?,?,?,?,?)";
         try (Connection con = ConnectionManager.getConnection()) {
               try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -49,7 +52,9 @@ public class JdbcArtistDao implements ArtistDao {
                     ps.setBoolean(8, artist.isActive());
                     ps.setString(9, artist.getName());
                 ps.executeUpdate();
-            }}
+            }}catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -129,4 +134,16 @@ public Optional<Artist> findByName(String name) {
         throw new RuntimeException(e);
     }
 }
+    public List<Discipline> findAllDisciplines(){
+        List<Discipline> disciplines = new ArrayList<>();
+        try (Connection conn = ConnectionManager.getConnection(); Statement stmt = conn.createStatement()) {
+                ResultSet rs = stmt.executeQuery("SELECT name FROM discipline");
+                while (rs.next()) {
+                    disciplines.add(new Discipline(rs.getString("name")));
+                }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return disciplines;
+    }
 }

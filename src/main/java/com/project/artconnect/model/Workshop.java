@@ -12,6 +12,7 @@ public class Workshop {
     private String location;
     private String description;
     private String level; // beginner, intermediate, advanced
+    private int remainingPlaces;
 
     public Workshop() {
     }
@@ -21,6 +22,14 @@ public class Workshop {
         this.date = date;
         this.instructor = instructor;
         this.price = price;
+    }
+
+    public int getRemainingPlaces() {
+        return remainingPlaces;
+    }
+
+    public void setRemainingPlaces(int remainingPlaces) {
+        this.remainingPlaces = remainingPlaces;
     }
 
     public String getTitle() {

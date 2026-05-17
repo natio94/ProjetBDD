@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class JdbcArtworkDao implements ArtworkDao {
-
+    JdbcArtistDao artistDao = new JdbcArtistDao();
 
     public JdbcArtworkDao( ) {
 
@@ -29,8 +29,7 @@ public class JdbcArtworkDao implements ArtworkDao {
         artwork.setPrice(rs.getDouble("Price"));
         artwork.setStatus(Artwork.Status.valueOf(rs.getString("Status").toUpperCase()));
 
-        Artist artist = new Artist();
-        artist.setName(rs.getString("artist_name"));
+        Artist artist = artistDao.findByName(rs.getString("artist_name")).get();
         artwork.setArtist(artist);
 
         return artwork;
@@ -120,10 +119,7 @@ public class JdbcArtworkDao implements ArtworkDao {
 
     @Override
     public List<Artwork> findByArtistName(String artistName) {
-        String sql = "SELECT aw.*, a.name AS artist_name " +
-                    "FROM Artwork aw " +
-                    "JOIN Artiste a ON aw.id_artiste = a.id_artiste " +
-                    "WHERE a.name = ?";
+        String sql = "SELECT * FROM view_artiste_artwork WHERE artiste_name = ?";
         try (Connection con = ConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, artistName);
